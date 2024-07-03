@@ -234,6 +234,40 @@ function PlasmicHomepage__RenderFunc(props: {
                       __composite["fieldId"] = "url";
                       return __composite;
                     })()}
+                    onRowClick={async (rowKey, row, event) => {
+                      const $steps = {};
+
+                      $steps["goToHtttpschatcourierxyz"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              destination: "htttps://chatcourier.xyz"
+                            };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["goToHtttpschatcourierxyz"] != null &&
+                        typeof $steps["goToHtttpschatcourierxyz"] ===
+                          "object" &&
+                        typeof $steps["goToHtttpschatcourierxyz"].then ===
+                          "function"
+                      ) {
+                        $steps["goToHtttpschatcourierxyz"] = await $steps[
+                          "goToHtttpschatcourierxyz"
+                        ];
+                      }
+                    }}
                     type={"grid"}
                   />
                 </React.Fragment>
